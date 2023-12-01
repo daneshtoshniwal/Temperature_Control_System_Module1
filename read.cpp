@@ -8,7 +8,7 @@
 #include <sys/msg.h>
 
 #include <unistd.h>
-
+#include <bits/stdc++.h>
  
 
 using namespace std;
@@ -61,8 +61,9 @@ int main() {
  
 
     // Receive messages from the message queue
-
-    while (true) {
+    set<int> st;
+    int cnt=100;
+    while (cnt--) {
 
         SensorData sensorData;
 
@@ -91,14 +92,17 @@ int main() {
         }
 
  
-
+        st.insert(sensorData.rackId);
+        if(st.size()==10){
+            cout<<"Recieved data from each rack sucessfully. "<<endl;
+            st.clear();
+        }
         // Print received temperature data
+        // cout << "Received message: Rack " << sensorData.rackId << ", Sensor " << sensorData.sensorId
 
-        cout << "Received message: Rack " << sensorData.rackId << ", Sensor " << sensorData.sensorId
-
-             << ", Temperature: " << sensorData.temperature << "°C\n";
-            time_t timestamp = sensorData.timestamp;
-	    cout << "Received timestamp: " << (timestamp);
+        //      << ", Temperature: " << sensorData.temperature << "°C\n";
+        //     time_t timestamp = sensorData.timestamp;
+	    // cout << "Received timestamp: " << ctime(&timestamp);
     }
 
  

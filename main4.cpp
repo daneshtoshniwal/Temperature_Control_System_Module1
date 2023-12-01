@@ -145,7 +145,7 @@ int main() {
     bool terminate = false;
     thread temperatureThread(simulateTemperature, ref(temperatures), msgQueueId, ref(terminate));
 
-    // Create a thread for handling user input
+    // // Create a thread for handling user input
     // thread userInputThread(handleUserInput, msgQueueId2, ref(trend), ref(terminate));
 
     // Wait for user to terminate the program (press Enter)
