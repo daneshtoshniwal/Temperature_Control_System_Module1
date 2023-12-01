@@ -15,6 +15,7 @@ void init(SensorData* structPtr) {
     structPtr->rackId=0;
     structPtr->sensorId=0;
     structPtr->temperature=0;
+    structPtr->fanspeed=0;
     structPtr->timestamp=0;
 }
 

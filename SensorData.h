@@ -16,6 +16,7 @@ typedef struct SensorData {
     int rackId;
     int sensorId;
     double temperature;
+    int fanspeed;
     time_t timestamp;
 } Sensor;
 

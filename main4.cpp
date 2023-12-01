@@ -80,7 +80,7 @@ void simulateTemperature(vector<vector<double>>& temperatures, int msgQueueId, b
 						if(temperatures[rackId][sensorId] < 30.0){trend[rackId]=1;}
                     }
 
-                     SensorData sensorData{1, rackId, sensorId, temperatures[rackId][sensorId],std::time(nullptr)	};
+                     SensorData sensorData{1, rackId, sensorId, temperatures[rackId][sensorId],fanspeed[rackId],std::time(nullptr)	};
                     
                      //cout<<x<<endl;
                     if (msgsnd(msgQueueId, &sensorData, sizeof(sensorData) - sizeof(long), 0) == -1) {
@@ -90,10 +90,11 @@ void simulateTemperature(vector<vector<double>>& temperatures, int msgQueueId, b
                 }
             }
             // Print temperatures in real time
+            
             for (int rackId = 0; rackId < constants::numRacks; ++rackId) {
                 for (int sensorId = 0; sensorId < constants::numSensorsPerRack; ++sensorId) {
                     cout << "Rack " << rackId << ", Sensor " << sensorId
-                         << ": " <<temperatures[rackId][sensorId] << "°C\n";
+                         << ": " <<temperatures[rackId][sensorId] << "°C"<<" "<<fanspeed[rackId]<<endl;
                 }
             }
             cout << "-----------------------\n";
